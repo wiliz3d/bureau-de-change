@@ -54,6 +54,40 @@ class CompanyRate(models.Model):
         return f"{self.company} - {self.currency.code}"
 
 
+class MarketRate(models.Model):
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False
+    )
+
+    currency = models.ForeignKey(
+        Currency,
+        on_delete=models.CASCADE
+    )
+
+    buy_rate = models.DecimalField(
+        max_digits=15,
+        decimal_places=2
+    )
+
+    sell_rate = models.DecimalField(
+        max_digits=15,
+        decimal_places=2
+    )
+
+    source = models.CharField(
+        max_length=100,
+        default="mock_api"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.currency.code}"
+
+
 class RateHistory(models.Model):
     company_rate = models.ForeignKey(
         CompanyRate,

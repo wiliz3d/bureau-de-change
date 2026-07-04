@@ -34,8 +34,10 @@ urlpatterns = [
     path("accounts/", include("accounts.urls")),
     path("dashboard/", include("dashboard.urls")),
     path("companies/", include("companies.urls")),
-    path("rates/",include("rates.urls"),
-),
+    path("rates/",include("rates.urls")),
+    path("converter/",include("converter.urls")),
+    path("api/",include("api.urls")),
+
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Currency Converter{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow">
+
+                <div class="card-body">
+
+                    <h2 class="mb-4">
+
+                        Currency Converter
+
+                    </h2>
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+                        {{ form.as_p }}
+
+                        <button class="btn btn-success w-100">
+
+                            Convert
+
+                        </button>
+
+                    </form>
+
+                    {% if result %}
+
+                    <hr>
+
+                    <h4>
+
+                        Rate
+
+                    </h4>
+
+                    <h2>
+
+                        ₦{{ result.rate }}
+
+                    </h2>
+
+                    <h4>
+
+                        Result
+
+                    </h4>
+
+                    <h1 class="text-success">
+
+                        ₦{{ result.result }}
+
+                    </h1>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from companies.services.company_service import get_user_company
 from currencies.models import Currency
-from rates.models import CompanyRate
+from rates.services.rate_service import RateService
 
 
 @login_required
@@ -11,9 +11,7 @@ def dashboard(request):
 
     company = get_user_company(request.user)
 
-    rates = CompanyRate.objects.filter(
-        company=company
-    )
+    rates = RateService.company_rates(company)
 
     context = {
 
@@ -23,12 +21,16 @@ def dashboard(request):
 
         "total_currencies": Currency.objects.count(),
 
-        "latest_rates": rates.order_by("-updated_at")[:5],
+        "latest_rates": rates[:5],
 
     }
 
     return render(
+
         request,
+
         "dashboard/dashboard.html",
+
         context,
+
     )

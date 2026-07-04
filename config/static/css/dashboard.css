@@ -1,0 +1,35 @@
+.table td{
+
+    vertical-align:middle;
+
+}
+
+.card{
+
+    border:none;
+
+    border-radius:15px;
+
+}
+
+.table-dark{
+
+    background:#111827;
+
+}
+
+.badge{
+
+    padding:10px 14px;
+
+    font-size:.85rem;
+
+}
+
+.pagination .page-link{
+
+    border-radius:10px;
+
+    margin:0 3px;
+
+}
