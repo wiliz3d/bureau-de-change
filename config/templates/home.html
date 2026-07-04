@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}LIAMFX Connect Hub{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <div class="col-lg-6">
+
+                <h1 class="display-4 fw-bold">
+                    Live Bureau De Change Exchange Rates
+                </h1>
+
+                <p class="lead mt-3">
+                    Compare live exchange rates from trusted Bureau De Change companies across Nigeria.
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="btn btn-success btn-lg">
+                        Live Rates
+                    </a>
+
+                    <a href="#" class="btn btn-outline-dark btn-lg">
+                        Currency Converter
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6 text-center">
+
+                <img
+                    src="{% static 'images/hero.png' %}"
+                    class="img-fluid"
+                    style="max-height:450px;"
+                    alt="Hero Image">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Live Exchange Rates -->
+<section class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold">
+            Live Company Exchange Rates
+        </h2>
+
+        <p class="text-muted">
+            Updated by registered Bureau De Change companies.
+        </p>
+
+    </div>
+
+    <div class="row g-4">
+
+        {% for rate in latest_rates %}
+
+        <div class="col-lg-3 col-md-4 col-sm-6">
+
+            <div class="card shadow-sm h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <h4 class="fw-bold">
+                            {{ rate.currency.code }}
+                        </h4>
+
+                        <span class="badge bg-success">
+                            Live
+                        </span>
+
+                    </div>
+
+                    <hr>
+
+                    <p class="mb-2">
+                        <strong>Buy:</strong>
+                        ₦{{ rate.buy_rate }}
+                    </p>
+
+                    <p class="mb-3">
+                        <strong>Sell:</strong>
+                        ₦{{ rate.sell_rate }}
+                    </p>
+
+                    <small class="text-muted">
+                        {{ rate.company.name }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center">
+
+                <h5>No exchange rates available yet.</h5>
+
+                <p class="mb-0">
+                    Once companies begin adding their rates, they will appear here automatically.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

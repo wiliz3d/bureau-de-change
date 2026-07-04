@@ -1,0 +1,145 @@
+{% extends 'dashboard/base_dashboard.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block dashboard_content %}
+
+<h2 class="fw-bold">
+
+{{ company.name }}
+
+</h2>
+
+<p class="text-muted">
+
+Company Dashboard
+
+</p>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Companies
+                </h6>
+
+                <h2>{{ total_companies }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Currencies
+                </h6>
+
+                <h2>{{ total_currencies }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card shadow-sm">
+
+            <div class="card-body">
+
+                <h6 class="text-muted">
+                    Exchange Rates
+                </h6>
+
+                <h2>{{ total_rates }}</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="card shadow-sm mt-5">
+
+    <div class="card-header">
+
+        <h5 class="mb-0">
+            Recent Exchange Rate Updates
+        </h5>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover mb-0">
+
+            <thead>
+
+                <tr>
+
+                    <th>Company</th>
+                    <th>Currency</th>
+                    <th>Buy</th>
+                    <th>Sell</th>
+                    <th>Updated</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for rate in latest_rates %}
+
+                <tr>
+
+                    <td>{{ rate.company.name }}</td>
+
+                    <td>{{ rate.currency.code }}</td>
+
+                    <td>₦{{ rate.buy_rate }}</td>
+
+                    <td>₦{{ rate.sell_rate }}</td>
+
+                    <td>{{ rate.updated_at|date:"M d, Y H:i" }}</td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="5" class="text-center">
+
+                        No exchange rates available.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

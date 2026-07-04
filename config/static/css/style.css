@@ -1,0 +1,51 @@
+body {
+    background: #f8fafc;
+    font-family: "Segoe UI", sans-serif;
+    color: #1e293b;
+}
+
+.navbar {
+    padding: 0.9rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero h1 {
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.hero p {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+.card {
+    border: none;
+    border-radius: 18px;
+    transition: all .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.btn {
+    border-radius: 10px;
+    padding: .75rem 1.5rem;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 25px 0;
+}
