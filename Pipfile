@@ -1,0 +1,28 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+pillow = "*"
+python-dotenv = "*"
+django-environ = "*"
+djangorestframework = "*"
+django-crispy-forms = "*"
+crispy-bootstrap5 = "*"
+whitenoise = "*"
+gunicorn = "*"
+django-widget-tweaks = "*"
+django-filter = "*"
+
+[dev-packages]
+black = "*"
+flake8 = "*"
+isort = "*"
+ipython = "*"
+
+[requires]
+python_version = "3.12"
+python_full_version = "3.12.1"
